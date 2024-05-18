@@ -60,75 +60,126 @@ class _FormScreenState extends State<FormScreen> {
                   ),
                 ),
               ),
+              const SizedBox(
+                height: 30,
+              ),
               Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: Column(
                   children: [
-                    Text('Difficulty:' , style: TextStyle(fontSize: 16),),
+                    const Text(
+                      'Difficulty:',
+                      style: TextStyle(fontSize: 16),
+                    ),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         GestureDetector(
-                        onTap:(){
-                          setState(() {
-                            difficultyLevel = difficultyLevel == 1 ? 0 : 1;
-                          });
-                        },
-                        child: difficultyLevel >= 1
-                            ? const Icon(Icons.star, color: Colors.white, size: 45,)
-                            : const Icon(Icons.star_border, color: Colors.white, size: 45,),
+                          onTap: () {
+                            setState(() {
+                              difficultyLevel = difficultyLevel == 1 ? 0 : 1;
+                            });
+                          },
+                          child: difficultyLevel >= 1
+                              ? const Icon(
+                                  Icons.star,
+                                  color: Colors.white,
+                                  size: 45,
+                                )
+                              : const Icon(
+                                  Icons.star_border,
+                                  color: Colors.white,
+                                  size: 45,
+                                ),
                         ),
                         GestureDetector(
-                        onTap:(){
-                          setState(() {
-                            difficultyLevel = difficultyLevel == 2 ? 1 : 2;
-                          });
-                        },
-                        child: difficultyLevel >= 2
-                            ? const Icon(Icons.star, color: Colors.white, size: 45,)
-                            : const Icon(Icons.star_border, color: Colors.white, size: 45,),
+                          onTap: () {
+                            setState(() {
+                              difficultyLevel = difficultyLevel == 2 ? 1 : 2;
+                            });
+                          },
+                          child: difficultyLevel >= 2
+                              ? const Icon(
+                                  Icons.star,
+                                  color: Colors.white,
+                                  size: 45,
+                                )
+                              : const Icon(
+                                  Icons.star_border,
+                                  color: Colors.white,
+                                  size: 45,
+                                ),
                         ),
                         GestureDetector(
-                        onTap:(){
-                          setState(() {
-                            difficultyLevel = difficultyLevel == 3 ? 2 : 3;
-                          });
-                        },
-                        child: difficultyLevel >= 3
-                            ? const Icon(Icons.star, color: Colors.white, size: 45,)
-                            : const Icon(Icons.star_border, color: Colors.white, size: 45,),
+                          onTap: () {
+                            setState(() {
+                              difficultyLevel = difficultyLevel == 3 ? 2 : 3;
+                            });
+                          },
+                          child: difficultyLevel >= 3
+                              ? const Icon(
+                                  Icons.star,
+                                  color: Colors.white,
+                                  size: 45,
+                                )
+                              : const Icon(
+                                  Icons.star_border,
+                                  color: Colors.white,
+                                  size: 45,
+                                ),
                         ),
                         GestureDetector(
-                        onTap:(){
-                          setState(() {
-                            difficultyLevel = difficultyLevel == 4 ? 3 : 4;
-                          });
-                        },
-                        child: difficultyLevel >= 4
-                            ? const Icon(Icons.star, color: Colors.white, size: 45,)
-                            : const Icon(Icons.star_border, color: Colors.white, size: 45,),
+                          onTap: () {
+                            setState(() {
+                              difficultyLevel = difficultyLevel == 4 ? 3 : 4;
+                            });
+                          },
+                          child: difficultyLevel >= 4
+                              ? const Icon(
+                                  Icons.star,
+                                  color: Colors.white,
+                                  size: 45,
+                                )
+                              : const Icon(
+                                  Icons.star_border,
+                                  color: Colors.white,
+                                  size: 45,
+                                ),
                         ),
                         GestureDetector(
-                        onTap:(){
-                          setState(() {
-                            difficultyLevel = difficultyLevel == 5 ? 4 : 5;
-                          });
-                        },
-                        child: difficultyLevel >= 5
-                            ? const Icon(Icons.star, color: Colors.white, size: 45,)
-                            : const Icon(Icons.star_border, color: Colors.white, size: 45,),
+                          onTap: () {
+                            setState(() {
+                              difficultyLevel = difficultyLevel == 5 ? 4 : 5;
+                            });
+                          },
+                          child: difficultyLevel >= 5
+                              ? const Icon(
+                                  Icons.star,
+                                  color: Colors.white,
+                                  size: 45,
+                                )
+                              : const Icon(
+                                  Icons.star_border,
+                                  color: Colors.white,
+                                  size: 45,
+                                ),
                         ),
-
                       ],
                     ),
                   ],
                 ),
+              ),
+              const SizedBox(
+                height: 30,
               ),
               Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: TextFormField(
                   controller: imageController,
                   textAlign: TextAlign.center,
+                  onChanged: (text) {
+                    setState(() {});
+                  },
                   decoration: const InputDecoration(
                     border: OutlineInputBorder(),
                     hintText: 'Image Link',
@@ -137,11 +188,45 @@ class _FormScreenState extends State<FormScreen> {
                   ),
                 ),
               ),
+              const SizedBox(
+                height: 30,
+              ),
+              Container(
+                height: 100,
+                width: 72,
+                decoration: BoxDecoration(
+                  color: Colors.deepPurple.shade900,
+                  borderRadius: BorderRadius.circular(10),
+                  border: Border.all(
+                    width: 2,
+                    color: Colors.deepPurpleAccent,
+                  ),
+                ),
+                child: ClipRRect(
+                  borderRadius: BorderRadius.circular(10),
+                  child: Image.network(
+                    imageController.text,
+                    errorBuilder: (context, error, stackTrace) {
+                      return Image.asset('assets/images/nophoto.png');
+                    },
+                    fit: BoxFit.cover,
+                  ),
+                ),
+              ),
+              const SizedBox(
+                height: 30,
+              ),
               ElevatedButton(
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: Colors.deepPurple.shade600,
+                ),
                 onPressed: () {
                   print(taskController.text);
                 },
-                child: Text('Add Task'),
+                child: const Text(
+                  'Add Task',
+                  style: TextStyle(color: Colors.white),
+                ),
               ),
             ],
           ),

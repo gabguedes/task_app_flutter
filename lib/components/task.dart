@@ -20,7 +20,7 @@ class Task extends StatefulWidget {
 class _TaskState extends State<Task> {
   int level = 0;
   int maestry = 0;
-  Color ProgressBarColor = Colors.blue;
+  Color ProgressBarColor = Colors.deepPurple.shade900;
 
   @override
   Widget build(BuildContext context) {
@@ -46,6 +46,7 @@ class _TaskState extends State<Task> {
                         ? (level / widget.difficulty) / 10
                         : 1,
                     color: Colors.white,
+                    backgroundColor: Colors.black38,
                   ),
                 ),
                 Text(
@@ -60,7 +61,7 @@ class _TaskState extends State<Task> {
           ),
           Container(
             decoration: BoxDecoration(
-              color: Colors.white,
+              color: Colors.black54,
               borderRadius: BorderRadius.circular(4),
             ),
             height: 100,
@@ -95,6 +96,7 @@ class _TaskState extends State<Task> {
                           style: const TextStyle(
                             fontSize: 18,
                             overflow: TextOverflow.ellipsis,
+                            color: Colors.white,
                           ),
                         ),
                       ),
@@ -107,6 +109,10 @@ class _TaskState extends State<Task> {
                     height: 52,
                     width: 72,
                     child: ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: Colors.deepPurple.shade600,
+                      ),
+
                       onPressed: () {
                         setState(() {
                           double value = widget.difficulty > 0
@@ -146,10 +152,11 @@ class _TaskState extends State<Task> {
                         children: [
                           Icon(
                             Icons.arrow_drop_up,
+                            color: Colors.white,
                           ),
                           Text(
                             'up',
-                            style: TextStyle(fontSize: 15),
+                            style: TextStyle(fontSize: 15,color: Colors.white),
                           ),
                         ],
                       ),

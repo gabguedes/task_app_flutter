@@ -22,7 +22,7 @@ class _HomePageState extends State<HomePage> {
             color: Colors.white,
           ),
         ),
-        backgroundColor: Colors.blue,
+        backgroundColor: Colors.deepPurple.shade900,
       ),
       body: AnimatedOpacity(
         opacity: opacity ? 1 : 0,

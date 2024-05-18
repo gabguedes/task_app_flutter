@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:primeiro_projeto_alura/screens/home_page.dart';
+import 'package:primeiro_projeto_alura/screens/form_screen.dart';
+// import 'package:primeiro_projeto_alura/screens/home_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -17,7 +18,7 @@ class MyApp extends StatelessWidget {
         // colorScheme: ColorScheme.fromSeed(seedColor: Colors.blue),
         useMaterial3: true,
       ),
-      home: const HomePage(),
+      home: const FormScreen(),
       // home: ,
     );
   }

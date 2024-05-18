@@ -20,7 +20,7 @@ class Task extends StatefulWidget {
 class _TaskState extends State<Task> {
   int level = 0;
   int maestry = 0;
-  Color ProgressBarColor = Colors.deepPurple.shade900;
+  Color progressBarColor = Colors.deepPurple.shade900;
 
   @override
   Widget build(BuildContext context) {
@@ -31,7 +31,7 @@ class _TaskState extends State<Task> {
           Container(
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(4),
-              color: ProgressBarColor,
+              color: progressBarColor,
             ),
             height: 140,
             padding: const EdgeInsets.all(8.0),
@@ -123,23 +123,23 @@ class _TaskState extends State<Task> {
                             maestry++;
                             switch (maestry) {
                               case 1:
-                                ProgressBarColor = Colors.green;
+                                progressBarColor = Colors.green;
                                 break;
 
                               case 2:
-                                ProgressBarColor = Colors.amber;
+                                progressBarColor = Colors.amber;
                                 break;
 
                               case 3:
-                                ProgressBarColor = Colors.deepOrange;
+                                progressBarColor = Colors.deepOrange;
                                 break;
 
                               case 4:
-                                ProgressBarColor = Colors.pinkAccent;
+                                progressBarColor = Colors.pinkAccent;
                                 break;
 
                               case 5:
-                                ProgressBarColor = Colors.black;
+                                progressBarColor = Colors.black;
                                 break;
                             }
                           }

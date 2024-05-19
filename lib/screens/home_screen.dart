@@ -18,11 +18,7 @@ class _HomeScreenState extends State<HomeScreen> {
         leading: Container(),
         title: const Text(
           'Tasks',
-          style: TextStyle(
-            color: Colors.white,
-          ),
         ),
-        backgroundColor: Colors.deepPurple.shade900,
       ),
       body: AnimatedOpacity(
         opacity: opacity ? 1 : 0,

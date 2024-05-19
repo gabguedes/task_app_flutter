@@ -50,6 +50,13 @@ class _TaskState extends State<Task> {
                   ),
                 ),
                 Text(
+                  'Maestry $maestry',
+                  style: const TextStyle(
+                    color: Colors.white,
+                    fontSize: 14,
+                  ),
+                ),
+                Text(
                   'Level $level',
                   style: const TextStyle(
                     color: Colors.white,
@@ -109,16 +116,12 @@ class _TaskState extends State<Task> {
                     height: 52,
                     width: 72,
                     child: ElevatedButton(
-                      style: ElevatedButton.styleFrom(
-                        backgroundColor: Colors.deepPurple.shade600,
-                      ),
-
                       onPressed: () {
                         setState(() {
                           double value = widget.difficulty > 0
                               ? (level / widget.difficulty) / 10
                               : 1;
-                          if (value == 1 && maestry <= 5) {
+                          if (value == 1 && maestry < 5) {
                             level = 0;
                             maestry++;
                             switch (maestry) {
@@ -127,7 +130,7 @@ class _TaskState extends State<Task> {
                                 break;
 
                               case 2:
-                                progressBarColor = Colors.amber;
+                                progressBarColor = Colors.amber.shade700;
                                 break;
 
                               case 3:
@@ -155,7 +158,7 @@ class _TaskState extends State<Task> {
                             color: Colors.white,
                           ),
                           Text(
-                            'up',
+                            'UP',
                             style: TextStyle(fontSize: 15,color: Colors.white),
                           ),
                         ],

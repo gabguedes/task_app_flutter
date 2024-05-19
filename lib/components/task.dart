@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:primeiro_projeto_alura/components/difficulty.dart';
+import 'package:primeiro_projeto_alura/data/task_inherited.dart';
 
 class Task extends StatefulWidget {
   final String text;
@@ -97,9 +98,15 @@ class _TaskState extends State<Task> {
                       child: assetOrNetwork() ? Image.asset(
                         widget.image,
                         fit: BoxFit.cover,
+                        errorBuilder: (context, error, stackTrace) {
+                          return Image.asset('assets/images/nophoto.png');
+                        },
                       ) : Image.network(
                         widget.image,
                         fit: BoxFit.cover,
+                        errorBuilder: (context, error, stackTrace) {
+                          return Image.asset('assets/images/nophoto.png');
+                        },
                       ),
                     ),
                   ),
@@ -129,6 +136,9 @@ class _TaskState extends State<Task> {
                     child: ElevatedButton(
                       onPressed: () {
                         setState(() {
+
+                          TaskInherited.of(context).incrementLevel(widget.difficulty);
+
                           double value = widget.difficulty > 0
                               ? (widget.level / widget.difficulty) / 10
                               : 1;

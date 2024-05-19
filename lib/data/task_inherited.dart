@@ -35,8 +35,32 @@ class TaskInherited extends InheritedWidget {
     ),
   ];
 
+  double userLevel = 0;
+
   void newTask(String taskName, String image, int difficulty){
     taskList.add(Task(text: taskName, image: image, difficulty: difficulty));
+  }
+
+  void incrementLevel(int difficulty){
+   switch(difficulty){
+     case 0:
+       break;
+     case 1:
+       userLevel += 1;
+       break;
+     case 2:
+       userLevel += 2;
+       break;
+     case 3:
+       userLevel += 3;
+       break;
+     case 4:
+       userLevel += 4;
+       break;
+     case 5:
+       userLevel += 5;
+       break;
+   }
   }
 
   static TaskInherited of(BuildContext context) {
@@ -46,7 +70,7 @@ class TaskInherited extends InheritedWidget {
   }
 
   @override
-  bool updateShouldNotify(TaskInherited old) {
-    return old.taskList.length != taskList.length;
+  bool updateShouldNotify(TaskInherited oldWidget) {
+    return oldWidget.taskList.length != taskList.length;
   }
 }

@@ -6,21 +6,22 @@ class Task extends StatefulWidget {
   final String image;
   final int difficulty;
 
-  const Task({
+  Task({
     super.key,
     required this.text,
     required this.image,
     required this.difficulty,
   });
 
+  int level = 0;
+  int maestry = 0;
+  Color progressBarColor = Colors.deepPurple.shade900;
+
   @override
   State<Task> createState() => _TaskState();
 }
 
 class _TaskState extends State<Task> {
-  int level = 0;
-  int maestry = 0;
-  Color progressBarColor = Colors.deepPurple.shade900;
 
   bool assetOrNetwork(){
     if(widget.image.contains('http')){
@@ -38,7 +39,7 @@ class _TaskState extends State<Task> {
           Container(
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(4),
-              color: progressBarColor,
+              color: widget.progressBarColor,
             ),
             height: 140,
             padding: const EdgeInsets.all(8.0),
@@ -50,21 +51,21 @@ class _TaskState extends State<Task> {
                   width: 200,
                   child: LinearProgressIndicator(
                     value: widget.difficulty > 0
-                        ? (level / widget.difficulty) / 10
+                        ? (widget.level / widget.difficulty) / 10
                         : 1,
                     color: Colors.white,
                     backgroundColor: Colors.black38,
                   ),
                 ),
                 Text(
-                  'Maestry $maestry',
+                  'Maestry ${widget.maestry}',
                   style: const TextStyle(
                     color: Colors.white,
                     fontSize: 14,
                   ),
                 ),
                 Text(
-                  'Level $level',
+                  'Level ${widget.level}',
                   style: const TextStyle(
                     color: Colors.white,
                     fontSize: 14,
@@ -129,34 +130,34 @@ class _TaskState extends State<Task> {
                       onPressed: () {
                         setState(() {
                           double value = widget.difficulty > 0
-                              ? (level / widget.difficulty) / 10
+                              ? (widget.level / widget.difficulty) / 10
                               : 1;
-                          if (value == 1 && maestry < 5) {
-                            level = 0;
-                            maestry++;
-                            switch (maestry) {
+                          if (value == 1 && widget.maestry < 5) {
+                            widget.level = 0;
+                            widget.maestry++;
+                            switch (widget.maestry) {
                               case 1:
-                                progressBarColor = Colors.green;
+                                widget.progressBarColor = Colors.green;
                                 break;
 
                               case 2:
-                                progressBarColor = Colors.amber.shade700;
+                                widget.progressBarColor = Colors.amber.shade700;
                                 break;
 
                               case 3:
-                                progressBarColor = Colors.deepOrange;
+                                widget.progressBarColor = Colors.deepOrange;
                                 break;
 
                               case 4:
-                                progressBarColor = Colors.pinkAccent;
+                                widget.progressBarColor = Colors.pinkAccent;
                                 break;
 
                               case 5:
-                                progressBarColor = Colors.black;
+                                widget.progressBarColor = Colors.black;
                                 break;
                             }
                           }
-                          level++;
+                          widget.level++;
                         });
                       },
                       child: const Column(

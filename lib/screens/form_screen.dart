@@ -18,6 +18,13 @@ class _FormScreenState extends State<FormScreen> {
 
   final _formKey = GlobalKey<FormState>();
 
+  bool valueValidator(String? value){
+    if (value != null && value.isEmpty) {
+      return true;
+    }
+    return false;
+  }
+
   @override
   Widget build(BuildContext context) {
     return Form(
@@ -54,10 +61,9 @@ class _FormScreenState extends State<FormScreen> {
                     padding: const EdgeInsets.all(8.0),
                     child: TextFormField(
                       validator: (String? value) {
-                        if (value != null && value.isEmpty) {
-                          return 'You must insert a task.';
-                        }
-                        return null;
+                        return valueValidator(value)
+                            ? 'You must insert a task.'
+                            : null;
                       },
                       controller: taskController,
                       textAlign: TextAlign.center,
@@ -190,10 +196,9 @@ class _FormScreenState extends State<FormScreen> {
                     padding: const EdgeInsets.all(8.0),
                     child: TextFormField(
                       validator: (value) {
-                        if (value!.isEmpty) {
-                          return 'You must insert a image url.';
-                        }
-                        return null;
+                        return valueValidator(value)
+                            ? 'You must insert a image url.'
+                            : null;
                       },
                       keyboardType: TextInputType.url,
                       controller: imageController,

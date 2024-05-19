@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:primeiro_projeto_alura/data/task_inherited.dart';
 
 class FormScreen extends StatefulWidget {
-  const FormScreen({super.key});
+  const FormScreen({super.key, required this.taskContext});
+
+  final BuildContext taskContext;
 
   @override
   State<FormScreen> createState() => _FormScreenState();
@@ -200,7 +203,7 @@ class _FormScreenState extends State<FormScreen> {
                       },
                       decoration: const InputDecoration(
                         border: OutlineInputBorder(),
-                        hintText: 'Image Link',
+                        hintText: 'Image URL',
                         fillColor: Colors.white12,
                         filled: true,
                       ),
@@ -240,17 +243,20 @@ class _FormScreenState extends State<FormScreen> {
                     child: ElevatedButton(
                       onPressed: () {
                         if (_formKey.currentState!.validate()) {
-                          print(taskController.text);
-                          print(difficultyLevel);
-                          print(imageController.text);
+                          TaskInherited.of(widget.taskContext).newTask(
+                              taskController.text,
+                              imageController.text,
+                              difficultyLevel)
+                          ;
                           ScaffoldMessenger.of(context).showSnackBar(
                             const SnackBar(
                               behavior: SnackBarBehavior.floating,
                               content: Text(
-                                'Printing screen...',
+                                'Creating task...',
                               ),
                             ),
                           );
+                          Navigator.pop(context);
                         }
                       },
                       child: const Text(

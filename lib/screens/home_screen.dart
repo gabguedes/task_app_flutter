@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:primeiro_projeto_alura/components/task.dart';
+import 'package:primeiro_projeto_alura/data/task_inherited.dart';
+import 'package:primeiro_projeto_alura/screens/form_screen.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -9,8 +11,6 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  bool opacity = true;
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -20,50 +20,20 @@ class _HomeScreenState extends State<HomeScreen> {
           'Tasks',
         ),
       ),
-      body: AnimatedOpacity(
-        opacity: opacity ? 1 : 0,
-        duration: const Duration(seconds: 1),
-        child: ListView(
-          children: const [
-            Task(
-              text: 'Study Flutter',
-              image:
-                  'assets/images/flutter_mascot.png',
-              difficulty: 3,
-            ),
-            Task(
-              text: 'Study React',
-              image:
-                  'assets/images/react.png',
-              difficulty: 3,
-            ),
-            Task(
-              text: 'Study JavaScript',
-              image:
-                  'assets/images/javascript.png',
-              difficulty: 5,
-            ),
-            Task(
-              text: 'Read a book',
-              image:'assets/images/book.jpg',
-              difficulty: 0,
-            ),
-            Task(
-              text: 'Play Games',
-              image: 'assets/images/gaming.png',
-              difficulty: 1,
-            ),
-            SizedBox(height: 80,)
-          ],
-        ),
+      body: ListView(
+        padding: const EdgeInsets.only(bottom: 70),
+        children: TaskInherited.of(context).taskList,
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          setState(() {
-            opacity = !opacity;
-          });
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (newContext) => FormScreen(taskContext: context,),
+            ),
+          );
         },
-        child: const Icon(Icons.remove_red_eye),
+        child: const Icon(Icons.add),
       ),
     );
   }

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:primeiro_projeto_alura/data/task_inherited.dart';
 import 'package:primeiro_projeto_alura/screens/form_screen.dart';
 import 'package:primeiro_projeto_alura/screens/home_screen.dart';
 // import 'package:primeiro_projeto_alura/screens/home_screen.dart';
@@ -26,9 +27,8 @@ class MyApp extends StatelessWidget {
         ),
         elevatedButtonTheme: ElevatedButtonThemeData(
           style: ElevatedButton.styleFrom(
-            shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(15)
-            ),
+            shape:
+                RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
             backgroundColor: Colors.deepPurple.shade600,
             textStyle: const TextStyle(
               color: Colors.white,
@@ -38,7 +38,9 @@ class MyApp extends StatelessWidget {
         colorScheme: const ColorScheme.dark(),
         useMaterial3: true,
       ),
-      home: const FormScreen(),
+      home: TaskInherited(
+        child: const HomeScreen(),
+      ),
       // home: ,
     );
   }
